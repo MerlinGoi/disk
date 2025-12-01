@@ -95,3 +95,28 @@ while($k = $r->fetch_assoc()) {
 }
 $conn->close();
 ?>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href=" ">
+    <script src="script.php"></script>
+</head>
+<body>
+    <script>
+        // Your JavaScript code to connect with script.php
+        fetch('script.php')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                // Process the data as needed
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
+</body>
+</html>
