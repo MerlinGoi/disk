@@ -1,0 +1,148 @@
+// script.js - generic handlers for index.html
+document.addEventListener('DOMContentLoaded', () => {
+	// Simple localStorage key
+	const KEY = 'site_egzamin_ads_sample';
+
+	// helpers
+	const load = () => JSON.parse(localStorage.getItem(KEY) || '[]');
+	const save = (arr) => localStorage.setItem(KEY, JSON.stringify(arr));
+	const nextId = () => String(Date.now());
+
+	// UI refs
+	const adsList = document.getElementById('adsList');
+	const addForm = document.getElementById('addForm');
+	const deleteSelect = document.getElementById('deleteSelect');
+
+	// render ads and delete select
+	function render() {
+		const ads = load();
+		adsList.innerHTML = '';
+		if (!ads.length) {
+			adsList.textContent = 'Brak ogłoszeń.';
+		} else {
+			for (const ad of ads) {
+				const article = document.createElement('article');
+				article.dataset.id = ad.id;
+
+				const img = document.createElement('img');
+				img.src = 'img_f/' + ad.image;
+				img.alt = ad.title;
+				img.style.maxWidth = '120px';
+				img.style.display = 'block';
+
+				const h3 = document.createElement('h3');
+				h3.textContent = ad.title;
+
+				const p = document.createElement('p');
+				p.textContent = ad.description;
+
+				const editBtn = document.createElement('button');
+				editBtn.type = 'button';
+				editBtn.textContent = 'Edytuj';
+				editBtn.dataset.action = 'edit';
+				editBtn.dataset.id = ad.id;
+
+				const delBtn = document.createElement('button');
+				delBtn.type = 'button';
+				delBtn.textContent = 'Usuń';
+				delBtn.dataset.action = 'delete';
+				delBtn.dataset.id = ad.id;
+
+				article.append(img, h3, p, editBtn, document.createTextNode(' '), delBtn);
+				adsList.appendChild(article);
+			}
+		}
+
+		// populate delete select
+		if (deleteSelect) {
+			deleteSelect.innerHTML = '<option value="">(wybierz...)</option>';
+			for (const ad of ads) {
+				const opt = document.createElement('option');
+				opt.value = ad.id;
+				opt.textContent = ad.title;
+				deleteSelect.appendChild(opt);
+			}
+		}
+	}
+
+	// add or update ad (no validation)
+	if (addForm) {
+		addForm.addEventListener('submit', (e) => {
+			e.preventDefault();
+			const title = addForm.title.value;
+			const description = addForm.description.value;
+			const image = addForm.image.value;
+
+			const editIdInput = addForm.querySelector('input[name="editingId"]');
+			const ads = load();
+
+			if (editIdInput && editIdInput.value) {
+				// update
+				const id = editIdInput.value;
+				const idx = ads.findIndex(a => a.id === id);
+				if (idx !== -1) {
+					ads[idx] = { id, title, description, image };
+				}
+				editIdInput.remove();
+			} else {
+				// new
+				const id = nextId();
+				ads.push({ id, title, description, image });
+			}
+
+			save(ads);
+			addForm.reset();
+			render();
+		});
+	}
+
+	// delete form (no validation)
+	const deleteForm = document.getElementById('deleteForm');
+	if (deleteForm) {
+		deleteForm.addEventListener('submit', (e) => {
+			e.preventDefault();
+			const sel = document.getElementById('deleteSelect');
+			if (!sel || !sel.value) return;
+			const ads = load().filter(a => a.id !== sel.value);
+			save(ads);
+			render();
+		});
+	}
+
+	// delegated edit/delete buttons
+	document.body.addEventListener('click', (e) => {
+		const btn = e.target.closest('button[data-action]');
+		if (!btn) return;
+		const action = btn.dataset.action;
+		const id = btn.dataset.id;
+		if (!id) return;
+
+		if (action === 'edit') {
+			const ads = load();
+			const ad = ads.find(a => a.id === id);
+			if (!ad) return;
+			// fill form for editing (create hidden editingId if needed)
+			if (addForm) {
+				addForm.title.value = ad.title;
+				addForm.description.value = ad.description;
+				addForm.image.value = ad.image;
+				let hid = addForm.querySelector('input[name="editingId"]');
+				if (!hid) {
+					hid = document.createElement('input');
+					hid.type = 'hidden';
+					hid.name = 'editingId';
+					addForm.appendChild(hid);
+				}
+				hid.value = ad.id;
+				addForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+			}
+		} else if (action === 'delete') {
+			const ads = load().filter(a => a.id !== id);
+			save(ads);
+			render();
+		}
+	});
+
+	// initial render
+	render();
+});
