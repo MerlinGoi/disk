@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>avia_model hobby </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header><h1>Modelarstwo lotnicze</h1></header>
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#regestration">registration</a></li>
+            <li><a href="#additional-info">Additional Info</a></li>
+        </ul>
+    </nav>
+    <main>
+        <article>
+            <h1>Pro hobby:</h1>
+            <p>Moje hobby jest bardzo ciekawe i rzadke.</p>
+            <section>
+                <img src="images/pobierz.png" alt="" id="hobby-photo" width="400" height="300">
+                <h2>Rezultaty mojego dzalania</h2>
+                <ul>
+                    <li>Model samolotu</li>
+                    <li>Model helikoptera</li>
+                    <li>Model drona</li>
+                </ul>
+            </section>
+        </article>
+        <aside>
+            <h2>Informacje dodatkowe</h2>
+            <p>Telegram: @Labalsamo <br> telefon: 574936835</p>
+        </aside>
+    </main>
+    
+    <footer>Sponsory <br>
+            Copyright © 2025 lotszybowcem24.pl | Ascendoor News by Ascendoor</footer>
+    <script>
+        const photos = [
+            "images/pobierz.png",
+            "images/photo2.png",
+            "images/photo3.png"
+        ];
+
+        let index = 0;
+        const imgElement = document.getElementById("hobby-photo");
+
+        // Ensure we have images and a valid element
+        if (photos.length > 0 && imgElement) {
+            imgElement.src = photos[index]; // Show first image immediately
+
+            setInterval(() => {
+            index = (index + 1) % photos.length; // Loop back to start
+            imgElement.src = photos[index];
+            }, 3000); // Change every 3 seconds
+        } else {
+            console.error("No images found or imgElement is missing.");
+        }
+    </script> 
+</body>
+</html>
