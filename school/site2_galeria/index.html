@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+    <html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>Zwiedzamy Polskę</title>
+    </head>
+<body>
+
+    <h1>Zwiedzamy Polskę</h1>
+
+    <div class="slideshow">
+        <div class="slide active"><img src="1.jpg" alt=""></div>
+        <div class="slide"><img src="2.jpg" alt=""></div>
+        <div class="slide"><img src="3.jpg" alt=""></div>
+        <div class="slide"><img src="4.jpg" alt=""></div>
+        <div class="slide"><img src="5.jpg" alt=""></div>
+        <div class="slide"><img src="6.jpg" alt=""></div>
+        <div class="slide"><img src="7.jpg" alt=""></div>
+
+        <span class="arrow left" onclick="changeSlide(-1)">&lt;</span>
+        <span class="arrow right" onclick="changeSlide(1)">&gt;</span>
+    </div>
+
+    <div class="thumbs">
+        <img src="1.jpg" onclick="showSlide(0)">
+        <img src="2.jpg" onclick="showSlide(1)">
+        <img src="3.jpg" onclick="showSlide(2)">
+        <img src="4.jpg" onclick="showSlide(3)">
+        <img src="5.jpg" onclick="showSlide(4)">
+        <img src="6.jpg" onclick="showSlide(5)">
+        <img src="7.jpg" onclick="showSlide(6)">
+    </div>
+
+    <div class="author">
+        Autorem galerii jest: Nazar 2/p<br>
+        <a href="https://ee-informatyk.pl/inf03-ee09/praktyka/INF.03-09-24.06-SG" style="color:white;">EE-Informaczyk.pl</a><br>
+        <a href="#" style="color:white;">Więcej zdjęć</a>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlide(index) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        function changeSlide(step) {
+            showSlide(currentSlide + step);
+        }
+    </script>
+
+</body>
+</html>

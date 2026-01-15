@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function even_or_odd(num) {
+            if (num % 2 === 0) {
+                console.log("Even");
+            } else {
+                console.log("Odd");
+            }
+        }
+
+
+        function chek_years_old(years) {
+            if (years >= 65) {
+                console.log("Senior");
+            } else if (years >= 18) {
+                console.log("Adult");
+            } else if (years >= 13) {
+                console.log("Teenager");
+            } else {
+                console.log("Minor");
+            }
+        }
+
+        function is_negative(num) {
+            let res = (num > 0) ? "Positive" : (num < 0) ? "Negative" : "Zero";
+            console.log(res);
+        }
+
+        /* Zadanie 3 –Większa liczba (z użyciem operatora warunkowego 3-argumentowy (tzw. ternary))
+            Wskazówka:
+            typ_zmiennej nzwa_zmiennej = (wartosc1 operator wartosc2 ) ? gdy_prawda : gdy_falsz;
+            Napisz program, który:
+                • Prosi użytkownika o podanie dwóch liczb,
+                • Wyświetla większą z nich, używając operatora ternary. */
+
+        function max_num(a, b) {
+            let res = (a > b) ? a : b;
+            console.log(res);
+
+        }
+        
+        function piupile_mark(mark){
+            console.log(mark > 50 ? "Pass" : "Fail");
+
+        }
+
+        function calculate_a_b_(a, b, opreration) {
+            if (opreration == "+") {
+                console.log(a + b);
+            } else if (opreration == "-") {
+                console.log(a - b);
+            } else if (opreration == "*") {
+                console.log(a * b);
+            } else if (opreration == "/") {
+                console.log(a / b);
+            } else {
+                console.log("Invalid operation");
+            }
+            
+        }
+
+        console.log("Testy:");
+        console.log("----------------------");
+        console.log("Even or Odd Test:");
+        even_or_odd(3);
+        
+        console.log("----------------------");
+        console.log("Age Category Test:");
+        chek_years_old(20);
+        
+        console.log("----------------------");
+        console.log("Positive/Negative Test:");
+        is_negative(-5);
+        
+        console.log("----------------------");
+        console.log("Maximum Number Test:");
+        max_num(5, 3);
+           
+        console.log("-----------------------");
+        console.log("Pupil Mark Test:");
+        piupile_mark(30);
+
+        //6 ZADANIEEEEEEEEEEEEWWDQDWWADAWDAWDADASDADWAWF
+
+        console.log("-----------------------");
+        console.log("operation: +");
+        calculate_a_b_(10, 20, "+");
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
