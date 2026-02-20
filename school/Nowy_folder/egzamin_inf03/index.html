@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Rejestracja</title>
+    <link rel="stylesheet" href="styl.css">
+    <script src="skrypt.js" defer></script>
+</head>
+<body>
+
+<header>
+    <h1>Formularz rejestracyjny konferencji <em><strong>Nasze Kwiaty</strong></em></h1>
+</header>
+
+<main>
+    <section class="formularz">
+
+        <div class="karta" id="karta1">
+            <h2>Dane osobowe</h2>
+            <input type="text" id="imie" placeholder="Wpisz imię..." required>
+            <input type="text" id="nazwisko" placeholder="Wpisz nazwisko..." required>
+            <button onclick="dalej1()">Następna karta</button>
+        </div>
+
+        <div class="karta ukryta" id="karta2">
+            <h2>Dane kontaktowe</h2>
+            <input type="email" placeholder="Twój e-mail...">
+            <input type="tel" placeholder="Twój numer telefonu...">
+            <button onclick="dalej2()">Następna karta</button>
+        </div>
+
+        <div class="karta ukryta" id="karta3">
+            <h2>Hasło do logowania</h2>
+            <input type="password" id="haslo1" placeholder="Podaj hasło">
+            <input type="password" id="haslo2" placeholder="Powtórz hasło">
+            <button onclick="zatwierdz()">Zatwierdź</button>
+        </div>
+
+    </section>
+</main>
+
+<footer>
+    <div class="stopka">
+        <video controls>
+            <source src="motyl.mp4" type="video/mp4">
+            Przeglądarka nie obsługuje tego formatu
+        </video>
+    </div>
+
+    <div class="stopka">
+        <h3>Plan konferencji</h3>
+        <table>
+            <tr><td>9:00 - 12:00</td><td>Pielęgnacja roślin</td></tr>
+            <tr><td>13:00 - 15:00</td><td>Targi kwiatowe</td></tr>
+        </table>
+    </div>
+
+    <div class="stopka">
+        <p><a href="https://kwiaty.pl/">Internetowa kwiaciarnia</a></p>
+    </div>
+
+    <div class="stopka">
+        <p>Formularz wykonał: 00000000000</p>
+    </div>
+</footer>
+
+</body>
+</html>
