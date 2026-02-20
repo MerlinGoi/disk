@@ -39,6 +39,28 @@
 
         document.write(wynik);
 
+
+        let imie1 = "Krzysztof";
+
+        document.write("Imię: " + imie1 + "<br>");
+        document.write("Długość imienia: " + imie1.length + "<br>");
+        document.write("Pierwsza litera: " + imie1[0] + "<br>");
+        document.write("Ostatnia litera: " + imie1[imie1.length - 1] + "<br><br>");
+
+          const text = "Ala ma kota, a kot ma Alę";
+
+        if (text.includes("kot")) {
+            document.write("Znaleziono słowo kot<br><br>");
+        } else {
+            document.write("Nie znaleziono słowa kot<br><br>");
+        }
+
+
+            const zdanie = "Ala ma kota";
+        const noweZdanie = zdanie.replace("kota", "psa");
+
+        document.write("Oryginał: " + zdanie + "<br>");
+        document.write("Po zmianie: " + noweZdanie + "<br><br>");
     </script>
 </head>
 <body>
