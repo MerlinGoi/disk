@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Rejestracja w sklepie</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function aktywujZakladke(numerZakladki) {
+            document.getElementById("blokKlient").style.display = "none";
+            document.getElementById("blokAdres").style.display = "none";
+            document.getElementById("blokKontakt").style.display = "none";
+
+            if (numerZakladki === 1)
+                document.getElementById("blokKlient").style.display = "block";
+            else if (numerZakladki === 2)
+                document.getElementById("blokAdres").style.display = "block";
+            else if (numerZakladki === 3)
+                document.getElementById("blokKontakt").style.display = "block";
+        }
+
+        function aktualizujPostep() {
+            let pola = document.querySelectorAll("input");
+            let wypelnione = 0;
+
+            pola.forEach(function(pole) {
+                if (pole.value !== "") {
+                    wypelnione++;
+                }
+            });
+
+            let procent = (wypelnione / pola.length) * 100;
+            document.getElementById("pasek").style.width = procent + "%";
+        }
+
+        function zatwierdz() {
+            alert("Dane zostały zatwierdzone");
+        }
+    </script>
+</head>
+<body>
+ <h2>Witryna internetowa</h2>
+<header>
+    <h1>Zarejestruj się w sklepie</h1>
+</header>
+
+<main>
+    <!-- LEWY BLOK -->
+    <section id="lewy">
+        <img src="obraz.png" alt="promocje">
+        <h3>Sprawdź promocje</h3>
+        
+        <table>
+            <tr>
+                <th>co?</th>
+                <th>ile taniej?</th>
+            </tr>
+            <tr>
+                <td>ubrania</td>
+                <td>15%</td>
+            </tr>
+            <tr>
+                <td>buty</td>
+                <td>25%</td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- PRAWY BLOK -->
+    <section id="prawy">
+        <form method="post">
+            <button type="button" onclick="aktywujZakladke(1)">Klient</button>
+            <button type="button" onclick="aktywujZakladke(2)">Adres</button>
+            <button type="button" onclick="aktywujZakladke(3)">Kontakt</button>
+
+            <div id="blokKlient">
+                <p>Imię</p>
+                <input type="text" name="imie" onblur="zwiekszPasekPostepu()" required>
+                <p>Nazwisko</p>
+                <input type="text" name="nazwisko" onblur="zwiekszPasekPostepu()" required>
+                <p>Data urodzenia</p>
+                <input type="date" name="dataUrodzenia" onblur="zwiekszPasekPostepu()" required><br>
+            </div>
+
+            <div id="blokAdres" style="display:none;">
+                <p>Ulica</p>
+                    <input type="text" name="ulica" onblur="zwiekszPasekPostepu()">
+                <p>Numer</p>
+                    <input type="number" name="numer" onblur="zwiekszPasekPostepu()">
+                <p>Miasto</p>
+                <input type="text" name="miasto" onblur="zwiekszPasekPostepu()"><br>
+            </div>
+
+            <div id="blokKontakt" style="display:none;">
+                <p>Numer komórkowy</p>
+                <input type="tel" name="telefon" onblur="zwiekszPasekPostepu()">
+                <p>
+                    <input type="checkbox" name="rodo"> Akceptuję RODO
+                </p>
+                <button type="submit" name="zapisz">Zatwierdź dane</button><br>
+            </div>
+
+        </form>
+
+        <div id="postep">
+            <div id="pasek"></div>
+        </div>
+    </section>
+
+</main>
+<footer>
+    Rejestrację do sklepu wykonał: 00000000000
+</footer>
+
+</body>
+</html>
