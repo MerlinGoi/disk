@@ -1,0 +1,88 @@
+header{
+    background-color: rgb(118, 171, 119);
+}
+
+h1{
+    color: white;
+    text-align: left;
+    font: arial;
+    padding-left: 0%;
+    padding-bottom: 2%;
+    padding-top: 1%;
+}
+
+.navigation {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.navigation a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 5px 10px;
+    background-color: rgb(83, 132, 84);
+    border-radius: 5px;
+}
+
+.navigation a:hover {
+    background-color: rgb(122, 191, 123);
+}
+
+form {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form label {
+    display: block;
+    margin: 10px 0 5px;
+    color: white;
+}
+
+form input {
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+form button {
+    padding: 5px 10px;
+    background-color: rgb(83, 132, 84);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: rgb(122, 191, 123);
+}
+
+div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around ;
+    float: inline-start;
+}
+
+.calendar-section{
+    background-color: rgb(122, 191, 123);
+    width: 150px;
+    height: 70px;
+    margin: auto;
+    border-radius: 10px;
+    border-color: rgb(83, 132, 84);
+    border: 2px solid;
+}
+
+footer{
+    float: inline-end;
+    background-color: rgb(118, 171, 119);
+    color: white;
+    font: arial;
+    padding-top: 4%;
+    margin-top: 20px;
+    position: relative;
+    bottom: 10px;
+    width: 100%;
+}
