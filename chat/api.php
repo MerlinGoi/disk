@@ -7,8 +7,7 @@ header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type');
 
 // Your API key (keep secure - ideally in environment variable)
-$API_KEY = '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';
-
+$API_KEY = file_get_contents('api.txt');
 // Handle preflight requests
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
