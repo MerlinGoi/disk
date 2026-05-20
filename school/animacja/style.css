@@ -1,0 +1,41 @@
+body {
+    font-family: Arial;
+}
+
+header {
+    background-color: lightblue;
+    text-align: center;
+    padding: 20px;
+}
+
+main {
+    display: flex;
+}
+
+nav {
+    width: 20%;
+    background-color: lightgray;
+    padding: 20px;
+}
+
+section {
+    width: 60%;
+    text-align: center;
+    padding: 20px;
+}
+
+aside {
+    width: 20%;
+    background-color: lightgray;
+}
+
+footer {
+    background-color: lightblue;
+    text-align: center;
+    padding: 10px;
+}
+
+.wybor {
+    margin: 10px;
+    cursor: pointer;
+}

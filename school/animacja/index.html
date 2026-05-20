@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Animacja JS</title>
+
+<style>
+  .animX {
+    width: 100px;
+    height: 100px;
+    background: red;
+    position: relative;
+  }
+
+  .animY {
+    width: 150px;
+    height: 150px;
+    background: blue;
+    border-radius: 50%;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="animX"></div>
+<div class="animY"></div>
+
+<script>
+  const animX = document.querySelector('.animX');
+  const animY = document.querySelector('.animY');
+
+  let x = 0;
+  let xDirection = 1;
+
+  let y = 0;
+  let yDirection = 1;
+
+  // animacja czerwonego kwadratu
+  function animateX() {
+    x += 2 * xDirection;
+
+    if (x >= 800 || x <= 0) {
+      xDirection *= -1;
+    }
+
+    animX.style.transform = `translateX(${x}px)`;
+
+    requestAnimationFrame(animateX);
+  }
+
+  // animacja niebieskiego koła
+  function animateY() {
+    y += 4 * yDirection;
+
+    if (y >= 300 || y <= 0) {
+      yDirection *= -1;
+    }
+
+    animY.style.transform = `translateY(${-y}px)`;
+
+    requestAnimationFrame(animateY);
+  }
+
+  animateX();
+  animateY();
+</script>
+
+</body>
+</html>
